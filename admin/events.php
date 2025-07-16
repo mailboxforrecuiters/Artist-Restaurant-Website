@@ -1,16 +1,16 @@
 <?php
 include 'includes/connect.php';
-
+include '../includes/connect.php';
+header('Content-Type: text/html; charset=utf-8');
 
 	if($_SESSION['admin_sid']==session_id())
 	{
 	   
 		?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="msapplication-tap-highlight" content="no">

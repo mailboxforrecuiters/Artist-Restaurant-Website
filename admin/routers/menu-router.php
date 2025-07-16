@@ -1,5 +1,7 @@
 <?php
 include '../includes/connect.php';
+header('Content-Type: text/html; charset=utf-8');
+$con->set_charset("utf8mb4");
 $target_dir = "images/";
 	foreach ($_POST as $key => $value)
 	{

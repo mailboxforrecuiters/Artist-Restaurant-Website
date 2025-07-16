@@ -1,6 +1,8 @@
 <?php
 ini_set("display_errors",1);
 include '../includes/connect.php';
+header('Content-Type: text/html; charset=utf-8');
+	$con->set_charset("utf8mb4");
 $target_dir = $_SERVER['DOCUMENT_ROOT']."/artist/admin/images/";
 $sql_entry = NULL;
 

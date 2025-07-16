@@ -1,5 +1,7 @@
 <?php
-
+	include '../includes/connect.php';
+	header('Content-Type: text/html; charset=utf-8');
+	$con->set_charset("utf8mb4");
 	foreach ($_POST as $key => $value)
 	{
 	   if(preg_match("/[0-9]+_category_name/",$key)){

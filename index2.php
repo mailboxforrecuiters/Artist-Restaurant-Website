@@ -1,7 +1,8 @@
 <?php
 
 include 'admin/includes/connect.php';
-
+header('Content-Type: text/html; charset=utf-8');
+$con->set_charset("utf8mb4");
 function wine(){    
     echo '<div class="col-lg-6 menu-item filter-wine">
             <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
@@ -177,6 +178,7 @@ function lau($con){
 };
 
 function grab_items($show,$category_name,$con){
+	$con->set_charset("utf8mb4");
     $result = mysqli_query($con,"SELECT * FROM items WHERE category = '$category_name' AND deleted = 0");
     while($row = mysqli_fetch_array($result)){
         if( $row['image'] != NULL  ) {
@@ -206,18 +208,19 @@ function grab_items($show,$category_name,$con){
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+  <meta http-equiv="Content-Language" content="en" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Artist Cafe</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="" name="description" />
+  <meta content="" name="keywords" />
 
   <!-- Favicons -->
-  <link href="assets/img/artist_logo.png" rel="icon">
-  <link href="assets/img/artist_logo.png" rel="apple-touch-icon">
+  <link href="assets/img/artist_logo.png" rel="icon" />
+  <link href="assets/img/artist_logo.png" rel="apple-touch-icon" />
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -263,7 +266,7 @@ function grab_items($show,$category_name,$con){
   <header id="header" class="fixed-top d-flex align-items-cente">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="https://www.facebook.com/pages/Cafe-Artist-Restaurant/109331572439906" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>&nbsp;<a href="https://www.instagram.com/cafe_artist_restaurant/" class="instagram"  target="_blank"><i class="bx bxl-instagram"></i></a>&nbsp;<img src="frame.png" alt="Download Our Menu" title="Download Our Menu"/></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="https://www.facebook.com/pages/Cafe-Artist-Restaurant/109331572439906" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>&nbsp;<a href="https://www.instagram.com/cafe_artist_restaurant/" class="instagram"  target="_blank"><i class="bx bxl-instagram"></i></a>&nbsp;<img src="frame.png" alt="Download Our Menu" title="Download Our Menu" class="bx"/></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 

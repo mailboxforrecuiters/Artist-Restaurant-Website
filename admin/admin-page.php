@@ -5,10 +5,9 @@ include 'includes/connect.php';
 	{
 		?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="msapplication-tap-highlight" content="no">
@@ -280,7 +279,8 @@ include 'includes/connect.php';
 
                     <tbody>
 				<?php
-				$result = mysqli_query($con, "SELECT * FROM items");
+                $con->set_charset("utf8mb4");
+				$result = mysqli_query($con, "SELECT * FROM items");                
 				while($row = mysqli_fetch_array($result))
 				{
 					echo '<tr><td><img src="../assets/img/delete-icon.jpg" style="cursor:pointer;" class="delete-this" rel="'.$row['id'].'" />&nbsp;
@@ -366,7 +366,7 @@ include 'includes/connect.php';
 
                     <tbody>
 				<?php
-                
+                    $con->set_charset("utf8mb4");
                     $result = mysqli_query($con, "SELECT * FROM category_list");
     				while($rows = mysqli_fetch_array($result))
     				{
