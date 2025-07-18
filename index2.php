@@ -150,7 +150,7 @@ function lau($con){
     echo '<div class="col-lg-6 menu-item filter-lau">
             <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
             <div class="menu-content">
-              <a href="#">Lau Se Te Do Bien</a><span>S 30.99</span><span>L 35.99</span>
+              <a href="#">Lẩu Se Te Đồ Biển</a><span>S 35.99</span><span>L 40.99</span>
             </div>
             <div class="menu-ingredients">
               Spicy Seafood Combination
@@ -159,7 +159,7 @@ function lau($con){
           <div class="col-lg-6 menu-item filter-lau">
             <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
             <div class="menu-content">
-              <a href="#">Lau Thai Lan</a><span>S 30.99</span><span>L 33.99</span>
+              <a href="#">Lẩu Thái Lan</a><span>S 35.99</span><span>L 40.99</span>
             </div>
             <div class="menu-ingredients">
               Spicy Thai Style Seafood Combination
@@ -168,7 +168,7 @@ function lau($con){
           <div class="col-lg-6 menu-item filter-lau">
             <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
             <div class="menu-content">
-              <a href="#">Lau Dau Ca Khaoi Mon</a><span>S 30.99</span><span>L 35.99</span>
+              <a href="#">Lẩu Dau Cá Khoai</a><span>S 35.99</span><span>L 40.99</span>
             </div>
             <div class="menu-ingredients">
               Fish Head & Taro
