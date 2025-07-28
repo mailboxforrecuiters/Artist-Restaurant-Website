@@ -6,11 +6,11 @@ $target_dir = "images/";
 	foreach ($_POST as $key => $value)
 	{
         if(preg_match("/[0-9]+_descr/",$key)){
-			if($value != ''){
-			$key = strtok($key, '_');
-			$value = htmlspecialchars($value);
-			$sql = "UPDATE items SET descr = '$value' WHERE id = $key;";
-			$con->query($sql);
+    			if($value != ''){
+    			$key = strtok($key, '_');
+    			$value = htmlspecialchars($value);
+    			$sql = "UPDATE items SET descr = '$value' WHERE id = $key;";
+    			$con->query($sql);
 			}
 		}
         

@@ -114,8 +114,8 @@ include 'includes/connect.php';
     <!-- START WRAPPER -->
     <div class="wrapper">
       <!-- START LEFT SIDEBAR NAV-->
-      <?php 
-      $page ="items";
+       <?php 
+      $page ="drinks";
         include "side.php";
       ?>
       <!-- END LEFT SIDEBAR NAV-->
@@ -142,10 +142,10 @@ include 'includes/connect.php';
         <div class="container">
           <p class="caption">Add, Edit or Remove Menu Items.</p>
           <div class="divider"></div>
-		  <form class="formValidate" id="formValidate1" method="post" action="routers/add-item.php" novalidate="novalidate"  enctype="multipart/form-data">
+		  <form class="formValidate" id="formValidate1" method="post" action="routers/add-beverages.php" novalidate="novalidate"  enctype="multipart/form-data">
             <div class="row">
               <div class="col s12 m4 l3">
-                <h4 class="header">Add Item (non Lẩu)</h4>
+                <h4 class="header">Add Drinks/ Wine</h4>
               </div>
               <div>            
                 <table>
@@ -153,7 +153,7 @@ include 'includes/connect.php';
                       <tr>
                         <th data-field="id">Name</th>
                         <th data-field="descr">Description</th>
-                        <th data-field="name">Item Price/Piece</th>
+                        <th data-field="name">Percent</th>
                         <th data-field="category">Category</th>
                         <th>Image</th>
                       </tr>
@@ -166,10 +166,9 @@ include 'includes/connect.php';
                     echo '<td><div class="input-field col s12"><label for="name">Description</label>';
 					echo '<input id="descr" name="descr" type="text" data-error=".errorTxt01"><div class="errorTxt01"></div></td>';
                                                             
-					echo '<td><div class="input-field col s12 "><label for="price" class="">Price</label>';
-					echo '<input id="price" name="price" type="text" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';                                  
-                     echo '<td><div class="input-field col s12 "><label for="price" >Category</label>';
-					echo '<input class="tags" id="category" name="category" type="text" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';
+					echo '<td><div class="input-field col s12 "><label for="percent" class="">Percent</label>';
+					echo '<input id="percent" name="percent" type="text" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';                                  
+                     echo '<td><select style="display:none;" id="category" name="category"><option></option><option value="Beers">Beers</option><option value="Soju">Soju</option><option value="Sake">Sake</option><option value="shochu">Shochu</option><option value="michelada">Michelada</option><option value="seltzer">Seltzer</option><option value="Non Alcoholic">Non Alcoholic</option><option value="Rượu Nếp">Rượu Nếp</option><option value="Wine-Red">Wine (red)</option><option value="Wine-White">Wine (white)</option></select></td>';
                     echo "<td><input type='file' id='image_up' name='image_up'/></td>";
 					echo '</tr>';
 				?>
@@ -186,107 +185,16 @@ include 'includes/connect.php';
             </div>
 			</form>	
             
-            <form class="formValidate" id="formValidate1" method="post" action="routers/lau-edit.php" novalidate="novalidate">
+            
+          
+          
+          
+          
+          
+          <form class="formValidate" id="formValidate" method="post" action="routers/beverages-router.php" novalidate="novalidate">
             <div class="row">
               <div class="col s12 m4 l3">
-                <h4 class="header">Add Item (Lẩu)</h4>
-              </div>
-              <div>             
-                <table>
-                    <thead>
-                      <tr>
-                        <th>&nbsp;</th>
-                        <th data-field="id">Lau Name</th>
-                        <th data-field="descr">Lau Desscription</th>
-                        <th data-field="name">Small Price</th>
-                        <th data-field="name">Large Price</th>
-                        <th data-field="name">Category</th>
-                        <th data-field="name">image</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-				<?php
-					
-					echo '<tr>'; 
-                    echo'<td>&nbsp;</td>';
-                    
-                    
-                    echo '<td><div class="input-field col s12"><label for="name">Name</label><input id="lau_name" name="lau_name" type="text" data-error=".errorTxt01"><div class="errorTxt01"></div></td>';					                 
-                    echo '<td><div class="input-field col s12"><label for="name">Description</label><input id="lau_descr" name="lau_descr" type="text" data-error=".errorTxt01"><div class="errorTxt01"></div></td>';
-                                                            
-					echo '<td><div class="input-field col s12 "><label for="small_price" class="">Small Price</label><input id="small_price" name="small_price" type="text" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';   
-                    echo '<td><div class="input-field col s12 "><label for="large_price" class="">Large Price</label><input id="large_price" name="large_price" type="text" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';                                  
-                    
-                    echo '<td><div class="input-field col s12 "><label for="price" >Category</label><input class="tags" id="category" name="category" type="text" value="lau" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';
-                    
-                    echo "<td><input type='file' id='image_up' name='image_up'/></td>";
-					echo '</tr>';
-				?>
-                    </tbody>
-</table>
-              </div>
-              
-              
-			     <div class="input-field col s12">
-                   <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Add Lau
-                    <i class="mdi-content-send right"></i>
-                  </button>
-                </div>
-            </div>
-           </form>
-          
-          
-          <form class="formValidate" id="formValidate" method="post" action="routers/lau-router.php" novalidate="novalidate">
-            <div class="row">
-              <div class="col s12 m4 l3">
-                <h4 class="header">Edit Lau Items</h4>
-              </div>
-              <div class="input-field col s12">
-                  <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Modify Lau
-                    <i class="mdi-content-send right"></i>
-                  </button>
-                </div>
-              <div>
-              <table>
-              <?php
-                $con->set_charset("utf8mb4");
-                    $result = mysqli_query($con, "SELECT * FROM lau");
-    				while($rows = mysqli_fetch_array($result))
-    				{
-    					echo '<tr>
-                        <td style="width:auto;"><img src="../assets/img/delete-icon.jpg" class="del_lau" style="cursor:poiner;" rel="'.$rows["lau_id "].'" categ="'.$rows["name"].'" /></td>';
-                        
-                        
-                        echo '<td><div class="input-field col s12"><label for="'.$rows["lau_id"].'_name">Name</label> <input value="'.$rows["name"].'" id="'.$rows["lau_id"].'_name " name="'.$rows['lau_id'].'_name" type="text" data-error=".errorTxt'.$rows["lau_id"].'"><div class="errorTxt'.$rows["lau_id"].'"></div></td>';	
-                        
-                        echo '<td><div class="input-field col s12 "><label for="'.$rows["descr"].'_descr">Description</label><input value="'.$rows["descr"].'" id="'.$rows["lau_id"].'_descr" name="'.$rows["lau_id"].'_descr" type="text" data-error=".errorTxt'.$rows["lau_id"].'"><div class="errorTxt'.$rows["lau_id "].'"></div></td>';
-                        
-    					echo '<td><div class="input-field col s12"><label for="'.$rows["lau_id"].'_small">Small Price</label> <input value="'.$rows["small"].'" id="'.$rows["lau_id"].'_small" name="'.$rows['lau_id'].'_small  " type="text" data-error=".errorTxt'.$row["lau_id "].'"><div class="errorTxt'.$rows["lau_id"].'"></div></td>';
-                        
-                        
-                        echo '<td><div class="input-field col s12"><label for="'.$rows["lau_id"].'_large">Large Price</label><input value="'.$rows["large"].'" id="'.$rows["lau_id"].'_large" name="'.$rows['lau_id'].'_large  " type="text" data-error=".errorTxt'.$row["lau_id"].'"><div class="errorTxt'.$rows["lau_id"].'"></div></td>';
-                        
-                        
-    					echo '</tr>';                        
-                        echo "<td><input type='file' id='image_up' name='image_up'/></td>";
-                    }
-            ?>
-            </table>
-              </div>
-              <div class="input-field col s12">
-                  <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Modify Lau
-                    <i class="mdi-content-send right"></i>
-                  </button>
-                </div>
-           </div>
-        </form>
-          
-          
-          <form class="formValidate" id="formValidate" method="post" action="routers/menu-router.php" novalidate="novalidate">
-            <div class="row">
-              <div class="col s12 m4 l3">
-                <h4 class="header">Edit Food Items</h4>
+                <h4 class="header">Edit Drinks</h4>
               </div>
               <div class="input-field col s12">
                   <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Modify
@@ -297,11 +205,11 @@ include 'includes/connect.php';
 				<table id="myTable" class="responsive-table display" cellspacing="0">
                     <thead>
                       <tr>
+                        <th>&nbsp;</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Item Price/Piece</th>
-                        <th>Category</th>
-                        <th>Available</th>
+                        <th>Percent</th>
+                        <th>Category</th>                      
                         <th>Image</th>
                       </tr>
                     </thead>
@@ -309,50 +217,28 @@ include 'includes/connect.php';
                     <tbody>
 				<?php
                 $con->set_charset("utf8mb4");
-				$result = mysqli_query($con, "SELECT * FROM items");                
+				$result = mysqli_query($con, "SELECT * FROM drinks");                
 				while($row = mysqli_fetch_array($result))
 				{
-					echo '<tr><td><img src="../assets/img/delete-icon.jpg" style="cursor:pointer;" class="delete-this" rel="'.$row['id'].'" />&nbsp;
-                    <span style="display:none;">'.$row["name"].'</span>
-                    <div class="input-field col s12">Name';
-					echo '<input value="'.$row["name"].'" id="'.$row["id"].'_name" name="'.$row['id'].'_name" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';					
-					echo '<td><div class="input-field col s12">Description';
-                    
-                    
-                    echo '<textarea  id="'.$row["id"].'_descr" name="'.$row['id'].'_descr" type="text" data-error=".errorTxt'.$row["id"].'">'.$row["descr"].'</textarea> <div class="errorTxt'.$row["id"].'"></div></td>';
-                  
-                    echo '<td><span style="display:none;">'; 
-                     if($row["price"]<10){
-                        echo "0".$row["price"];
-                     }else{
-                        echo $row["price"];
-                     }
-                    echo'</span><div class="input-field col s12 ">Price';
-					echo '<input value="'.$row["price"].'" id="'.$row["id"].'_price" name="'.$row['id'].'_price" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';
-                    
+					echo '<tr>                    
+                    <td><img src="../assets/img/delete-icon.jpg" style="cursor:pointer;" class="delete-this-drinks" rel="'.$row['id'].'" />&nbsp;</td>'; 
                     
                     echo '<td>
-                    <span style="display:none;">'.$row["category"].'</span>
-                    <div class="input-field col s12">Category';
-                    echo '<input value="'.$row["category"].'" id="'.$row["id"].'_category" name="'.$row['id'].'_category" type="text" data-error=".errorTxt'.$row["id"].'" class="tags"><div class="errorTxt'.$row["id"].'"></div></td>';
+                    <span style="display:none;">'.$row["name"].'</span>
+                    <div class="input-field col s12">Name<input value="'.$row["name"].'" id="'.$row["id"].'_name" name="'.$row['id'].'_name" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';					
                     
-					echo '<td>';
-					if($row['deleted'] == 0){
-						$text1 = ' selected ';
-						$text2 = '';
-					}
-					else{
-						$text1 = '';
-						$text2 = ' selected ';						
-					}
-					echo '<select name="'.$row['id'].'_hide">
-                      <option value="1"'.$text1.'>Available</option>
-                      <option value="2"'.$text2.'>Not Available</option>
-                    </select></td>'; 
+					echo '<td><div class="input-field col s12">Description<textarea  id="'.$row["id"].'_descr" name="'.$row['id'].'_descr" type="text" data-error=".errorTxt'.$row["id"].'">'.$row["descr"].'</textarea> <div class="errorTxt'.$row["id"].'"></div></td>';
+                  
+                    echo '<td><div class="input-field col s12 ">Percent';
+					echo '<input value="'.$row["percent"].'" id="'.$row["id"].'_percent" name="'.$row['id'].'_percent" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';
+                    
+                    
+                    echo '<td><span style="display:none;">'.$row["type"].'</span>
+                    <div class="input-field col s12">Category';
+                    echo '<input value="'.$row["type"].'" id="'.$row["id"].'_category" name="'.$row['id'].'_category" type="text" data-error=".errorTxt'.$row["id"].'" class="tags"><div class="errorTxt'.$row["id"].'"></div></td>';
                     
                     echo '<td style="text-align:center;">';
-                        echo "<iframe src='upload_image.php?row=$row[id]' style='width:200px;height:70px;border:0p solid #bbb;' frameborder='0'  scrolling='no' ></iframe>";
-                    echo '</div>'; 
+                        //echo "<iframe src='upload_image.php?row=$row[id]' style='width:200px;height:70px;border:0p solid #bbb;' frameborder='0'  scrolling='no' ></iframe></div>'; 
                     
                     echo '</td>';
                     echo '</tr>';
@@ -364,55 +250,71 @@ include 'includes/connect.php';
 </table>
               </div>
 			  <div class="input-field col s12">
-                              <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Modify
-                                <i class="mdi-content-send right"></i>
-                              </button>
-                            </div>
+                  <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Modify
+                    <i class="mdi-content-send right"></i>
+                  </button>
+                </div>
             </div>
 			</form>
-		  
-          
             
             
-            
-            
-            <form class="formValidate" id="formValidate1" method="post" action="routers/category-edit.php" novalidate="novalidate">
+            <form class="formValidate" id="formValidate" method="post" action="routers/wine-router.php" novalidate="novalidate">
             <div class="row">
               <div class="col s12 m4 l3">
-                <h4 class="header">Category Edit</h4>
+                <h4 class="header">Edit Wine Items</h4>
               </div>
+              <div class="input-field col s12">
+                  <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Modify
+                    <i class="mdi-content-send right"></i>
+                  </button>
+                </div>
               <div>
-                <table>
+				<table id="myTable" class="responsive-table display" cellspacing="0">
                     <thead>
                       <tr>
                         <th>&nbsp;</th>
-                        <th data-field="id">Category Name</th>
-                        <th data-field="descr">List Name</th>
-                        <th data-field="name">Category Description</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Percent</th>
+                        <th>Category</th>                      
+                        <th>Image</th>
                       </tr>
                     </thead>
 
                     <tbody>
 				<?php
-                    $con->set_charset("utf8mb4");
-                    $result = mysqli_query($con, "SELECT * FROM category_list");
-    				while($rows = mysqli_fetch_array($result))
-    				{
-    					echo '<tr>
-                        <td><img src="../assets/img/delete-icon.jpg" class="del_categ" style="cursor:poiner;" rel="'.$rows["id"].'" categ="'.$rows["category_name"].'" /></td>
-                        <td><div class="input-field col s12"><label for="'.$rows["id"].'_category_name">Name</label>';
-    					echo '<input value="'.$rows["category_name"].'" id="'.$rows["id"].'_category_name " name="'.$rows['id'].'_category_name " type="text" data-error=".errorTxt'.$rows["id"].'"><div class="errorTxt'.$rows["id"].'"></div></td>';	
-                        
-                        echo '<td><div class="input-field col s12 "><label for="'.$rows["id"].'_category_list_name ">List Name</label>';
-                        echo '<input value="'.$rows["category_list_name"].'" id="'.$rows["id"].'_category_list_name" name="'.$rows["id"].'_category_list_name" type="text" data-error=".errorTxt'.$rows["id"].'"><div class="errorTxt'.$rows["id"].'"></div></td>';
-                        
-    					echo '<td><div class="input-field col s12"><label for="'.$rows["id"].'_category_description">Description</label>';
-                        echo '<input value="'.$rows["category_description"].'" id="'.$rows["id"].'_category_description" name="'.$rows['id'].'_category_description  " type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$rows["id"].'"></div></td>';
-    					echo '</tr>';
-                    }
+                $con->set_charset("utf8mb4");
+				$result = mysqli_query($con, "SELECT * FROM wine");                
+				while($row = mysqli_fetch_array($result))
+				{
+					echo '<tr>                    
+                    <td><img src="../assets/img/delete-icon.jpg" style="cursor:pointer;" class="delete-this-wine" rel="'.$row['id'].'" />&nbsp;</td>'; 
+                    
+                    echo '<td>
+                    <span style="display:none;">'.$row["name"].'</span>
+                    <div class="input-field col s12">Name<input value="'.$row["name"].'" id="'.$row["id"].'_name" name="'.$row['id'].'_name" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';					
+                    
+					echo '<td><div class="input-field col s12">Description<textarea  id="'.$row["id"].'_descr" name="'.$row['id'].'_descr" type="text" data-error=".errorTxt'.$row["id"].'">'.$row["descr"].'</textarea> <div class="errorTxt'.$row["id"].'"></div></td>';
+                  
+                    echo '<td><div class="input-field col s12 ">Percent';
+					echo '<input value="'.$row["percent"].'" id="'.$row["id"].'_percent" name="'.$row['id'].'_percent" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';
+                    
+                    
+                    echo '<td><span style="display:none;">'.$row["type"].'</span>
+                    <div class="input-field col s12">Category';
+                    echo '<input value="'.$row["type"].'" id="'.$row["id"].'_category" name="'.$row['id'].'_category" type="text" data-error=".errorTxt'.$row["id"].'" class="tags"><div class="errorTxt'.$row["id"].'"></div></td>';
+                    
+                    echo '<td style="text-align:center;">';
+                        //echo "<iframe src='upload_image.php?row=$row[id]' style='width:200px;height:70px;border:0p solid #bbb;' frameborder='0'  scrolling='no' ></iframe></div>'; 
+                    
+                    echo '</td>';
+                    echo '</tr>';
+                    
+                    
+				}
 				?>
-                </tbody>
-            </table>
+                    </tbody>
+</table>
               </div>
 			  <div class="input-field col s12">
                   <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Modify
@@ -420,12 +322,7 @@ include 'includes/connect.php';
                   </button>
                 </div>
             </div>
-			</form>	
-            
-            
-            
-            
-            
+			</form>
             
             <div class="divider"></div>
             
@@ -508,41 +405,31 @@ include 'includes/connect.php';
       $(".uploadimage").click(function(){
             alert("click");
       });
-        
-        
-        $(".delete-this").click(function(){
-            if (  confirm("Are you sure you want to delete this item ?") ){
-                $.post( "delete_item.php", { id: $(this).attr('rel') },function(data){
+      $(".delete-this-wine").click(function(){
+            if (  confirm("Are you sure you want to delete this wine ?") ){
+                $.post( "delete_wine.php", { id: $(this).attr('rel') },function(data){
                     alert("Item Successfully Deleted!");
-                    window.location="admin-page.php";
+                    window.location="http://www.artistrestaurant.com/admin/drinks.php";
                 });
             }
         }); 
         
-        $(".del_lau").click(function(){
-            if (  confirm("Are you sure you want to delete this item ?") ){
-                $.post( "delete_lau.php", { id: $(this).attr('rel') },function(data){
+        $(".delete-this-drinks").click(function(){
+            if (  confirm("Are you sure you want to delete this drink ?") ){
+                $.post( "delete_drinks.php", { id: $(this).attr('rel') },function(data){
                     alert("Item Successfully Deleted!");
-                    window.location="admin-page.php";
+                    window.location="http://www.artistrestaurant.com/admin/drinks.php";
                 });
             }
-        }); 
-        
-        //del_lau
-        $(".del_categ").click(function(){
-           if(confirm("Are you sure you want to delete this category?")){
-                $.post("delete_categ.php",{id:$(this).attr('rel'),categ: $(this).attr('categ') },function(data){
-                    alert("Category Deleted!  All previous items under this category are now un-categorized");
-                    window.location="admin-page.php";
-                });
-           } 
         });
+        
+        
     </script>
 	<script type="text/javascript">        
     $("#formValidate").validate({
         rules: {
 			<?php
-			$result = mysqli_query($con, "SELECT id FROM items");           
+			$result = mysqli_query($con, "SELECT id FROM drinks");           
 			while($row = mysqli_fetch_array($result))
 			{
 				echo $row["id"].'_name:{
@@ -559,7 +446,7 @@ include 'includes/connect.php';
 		?>
         messages: {
 			<?php
-			$result = mysqli_query($con, "SELECT id FROM items");
+			$result = mysqli_query($con, "SELECT id FROM wine");
 			while($row = mysqli_fetch_array($result))
 			{  
 				echo $row["id"].'_name:{

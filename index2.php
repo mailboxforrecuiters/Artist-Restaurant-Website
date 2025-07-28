@@ -3,178 +3,75 @@
 include 'admin/includes/connect.php';
 header('Content-Type: text/html; charset=utf-8');
 $con->set_charset("utf8mb4");
-function wine(){    
-    echo '<div class="col-lg-6 menu-item filter-wine">
+function wine($con){
+    $image = "assets/img/menu/mozzarella.jpg";
+    $con->set_charset("utf8mb4");
+    $result = mysqli_query($con,"SELECT DISTINCT `type` as ctg FROM wine");
+    while($row = mysqli_fetch_array($result)){
+        echo '<div class="col-lg-6 menu-item filter-wine">
             <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
             <div class="menu-content">
-              <a href="#">Red</a>
+              <a href="#">'.$row['ctg'].'</a>
             </div>
-            <div class="menu-ingredients">             
-                Silver Oak (Cabernet Sauvignon)<br/>
-                artemis stags leap (Cabernet Sauvignon)<br/>
-                Caymus 47(Cabernet Sauvignon)<br/>
-                Joseph Phelps (Cabernet Sauvignon)<br/>
-                Austin Hope (Cabernet Sauvignon)<br/>
-                Daou (Cabernet Sauvignon)<br/>
-                The Prisoner (Cabernet Sauvignon)<br/>
-                Frank Family (Cabernet Sauvignon)<br/>
-                Orwin Swift Palermo (Cabernet Sauvignon)<br/>
-                The Prisoner Red Blend (Zinfandel)
-            </div>
-          </div>
-          <div class="col-lg-6 menu-item filter-wine">
-            <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
-            <div class="menu-content">
-              <a href="#">White</a>
-            </div>
-            <div class="menu-ingredients">             
-                Bearitage (Sauvignon Blanc)<br/>
-                Lucas & Lewellen (Chardonnary)<br/>
-                Butter (Chardonnay)<br/>
+            <div class="menu-ingredients"> ';
+               $res2 = mysqli_query($con,"SELECT name,percent,descr FROM wine WHERE type='$row[ctg]'");
+                 while($row2 = mysqli_fetch_array($res2)){
+                    if(strlen($row2['descr'])  == 0  ) {
+                        echo $row2['name'].' '.$row2['percent']."%<br/>";
+                    }else{
+                        echo $row2['name'].' '.$row2['descr'].' '.$row2['percent']."%<br/>";
+                    }
+                 }
+              echo'
             </div>
           </div>
-          ';
+         ';
+    }
+    
 };
 
-function drinks(){
-    echo '<div class="col-lg-6 menu-item filter-drinks">
+function drinks($con){
+    $image = "assets/img/menu/mozzarella.jpg";
+    $con->set_charset("utf8mb4");
+    $result = mysqli_query($con,"SELECT DISTINCT `type` as ctg FROM drinks");
+    while($row = mysqli_fetch_array($result)){
+         echo '<div class="col-lg-6 menu-item filter-drinks">
             <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
             <div class="menu-content">
-              <a href="#">Beers</a>
+              <a href="#">'.$row['ctg'].'</a>
             </div>
-            <div class="menu-ingredients">
-              Heinekin 5%<br/>
-              Heinekin Light 3.3%<br/>
-              Heinekin Silver 4%<br/>
-              Corona 4.6%<br/>
-              Bud Light 4.2% <br/>
-              Budweiser 5%<br/>
-              Modelo 4.4%<br/>
-              Michelob Ultra 4.2%<br/>
-              Coors Light 4.2% <br/>
-              Lagunitas IPA 6.2%<br/>
-              805 4.7%<br/>
-              Blue Moon 5.4%<br/>
-              Stella Artois 5%<br/>
-              Dos Equis 4.7%<br/>
-              Sam Adams 5%<br/>
-              Shock Top 5.2%<br/>
-              Pilsner Urquell 4.4%<br/>
-              Modelo Chelada 24oz Mango 3.5%<br/>
-            </div>
-          </div>
-          <div class="col-lg-6 menu-item filter-drinks">
-            <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
-            <div class="menu-content">
-              <a href="#">SOJU (KOREAN)</a>
-            </div>
-            <div class="menu-ingredients">
-              Jinro (375ml) Original (Green Bottle) 20.1%<br/>
-              Jinro (375ml) "Is Back" (Blue Bottle) 16.9%<br/>
-              Jinro (375ml) "Is Back - Zero Calorie" (Pink Bottle) 13%<br/>
-              Soon Hari Soju (375ml) Flavors: 13%<br/>
-              (Yogurt/Citron/Apple Mango/Peach)
-            </div>
-          </div>
-          <div class="col-lg-6 menu-item filter-drinks">
-            <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
-            <div class="menu-content">
-              <a href="#">Sake</a>
-            </div>
-            <div class="menu-ingredients">
-              Dassai 45 (720ml Bottle) 16%<br/>
-              Dassai 39 (720ml Bottle) 16%<br/>
-              Dassai 23 (720ml Bottle) 16%<br/>
-              Ikezo Jelly Can (Yuzu, Mix Berry, Peach) - 5%<br/>
-            </div>
-          </div>          
-          <div class="col-lg-6 menu-item filter-drinks">
-            <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
-            <div class="menu-content">
-              <a href="#">Shochu (Japanese)</a>
-            </div>
-            <div class="menu-ingredients">
-              Kinmiya (720ml Bottle) 20%
-            </div>
-          </div>
-          <div class="col-lg-6 menu-item filter-drinks">
-            <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
-            <div class="menu-content">
-              <a href="#">Michelada</a>
-            </div>
-            <div class="menu-ingredients">
-              (comes with your choice of any beer*)
-*see list above
-            </div>
-          </div>
-          <div class="col-lg-6 menu-item filter-drinks">
-            <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
-            <div class="menu-content">
-              <a href="#">Sake: (Vietnamese) Ruou Nep</a>
-            </div>
-            <div class="menu-ingredients">
-              Blue Phoenix (Bottle) - 14%<br/>
-            </div>
-          </div>
-          <div class="col-lg-6 menu-item filter-drinks">
-            <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
-            <div class="menu-content">
-              <a href="#">Seltzer: (12oz Can)</a>
-            </div>
-            <div class="menu-ingredients">
-              White Claw 5%<br/>
-              Topo Chico 4.7%<br/>
-            </div>
-          </div>
-          <div class="col-lg-6 menu-item filter-drinks">
-            <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
-            <div class="menu-content">
-              <a href="#">Non Alcoholic:</a>
-            </div>
-            <div class="menu-ingredients">
-              Athletic < 0.5% (Can) <br/>
-              Soda: Coke, Diet Coke, Sprite (Can)<br/>
-              Perrier (Bottle)<br/>
-              Bottle Water<br/>
-              Palm Juice (Bottle)<br/>
-              Hot/Ice Black Tea (Unsweetened)<br/>
-              Soda Chanh (Soda Lemonade)<br/>
-              Da Chanh (Lemonade)<br/>
-              Soda Xi Muoi (Plum Soda)
-            </div>
-          </div>
-          ';
+            <div class="menu-ingredients">';
+             $res2 = mysqli_query($con,"SELECT name,percent,descr FROM drinks WHERE type='$row[ctg]'");
+             while($row2 = mysqli_fetch_array($res2)){
+                if(strlen($row2['descr'])  == 0  ) {
+                    echo $row2['name'].' '.$row2['percent']."%<br/>";
+                }else{
+                    echo $row2['name'].' '.$row2['descr'].' '.$row2['percent']."%<br/>";
+                }
+             }
+            echo '</div>
+          </div>';
+    }
+    
+    
+    
 }
 
 function lau($con){    
-    echo '<div class="col-lg-6 menu-item filter-lau">
+    $image = "assets/img/menu/mozzarella.jpg";
+    $con->set_charset("utf8mb4");
+    $result = mysqli_query($con,"SELECT * FROM lau");
+    while($row = mysqli_fetch_array($result)){
+        echo '<div class="col-lg-6 menu-item filter-lau">
             <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
             <div class="menu-content">
-              <a href="#">Lẩu Se Te Đồ Biển</a><span>S 35.99</span><span>L 40.99</span>
+              <a href="#">'.$row['name'].'</a><span>S '.$row['small'].'</span><span>L '.$row['large'].'</span>
             </div>
             <div class="menu-ingredients">
-              Spicy Seafood Combination
+              '.$row['descr'].'
             </div>
-          </div>
-          <div class="col-lg-6 menu-item filter-lau">
-            <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
-            <div class="menu-content">
-              <a href="#">Lẩu Thái Lan</a><span>S 35.99</span><span>L 40.99</span>
-            </div>
-            <div class="menu-ingredients">
-              Spicy Thai Style Seafood Combination
-            </div>
-          </div>
-          <div class="col-lg-6 menu-item filter-lau">
-            <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="" />
-            <div class="menu-content">
-              <a href="#">Lẩu Dau Cá Khoai</a><span>S 35.99</span><span>L 40.99</span>
-            </div>
-            <div class="menu-ingredients">
-              Fish Head & Taro
-            </div>
-          </div>
-          ';
+          </div>';
+    }   
 };
 
 function grab_items($show,$category_name,$con){
@@ -210,12 +107,12 @@ function grab_items($show,$category_name,$con){
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-  <meta http-equiv="Content-Language" content="en" />
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Content-Language" content="vi" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Artist Cafe</title>
-  <meta content="" name="description" />
+  <meta content="greatest late night dining vibes you will ever experience. Not only is the food fantastic, but the beers are also very affordable. Truly truly one of orange county's hidden gems -- known for their ribeye steak, or if you're a southerner, then the crawfish is gonna leave you feeling like you've never left the south." name="description" />
   <meta content="" name="keywords" />
 
   <!-- Favicons -->
@@ -437,9 +334,9 @@ function grab_items($show,$category_name,$con){
                 if($ctg[$i]['data_name'] =="lau"){
                      lau($con);
                 }else if($ctg[$i]['data_name'] == "drinks"){
-                     drinks();
+                     drinks($con);
                 }else if ($ctg[$i]['data_name'] == "wine"){
-                    wine();
+                     wine($con);
                 }else{
                      grab_items($ctg[$i]['show_name'],$ctg[$i]['data_name'],$con);   
                 }                
