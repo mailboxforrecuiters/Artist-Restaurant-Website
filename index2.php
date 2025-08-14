@@ -685,7 +685,7 @@ function grab_items($show,$category_name,$con){
 
           <div class="col-lg-8 mt-5 mt-lg-0" style="text-align: center;">
            
-           <iframe src='https://widgets.sociablekit.com/google-reviews/iframe/25588485' frameborder='0' width='100%' height='1000'></iframe>
+          <div class='sk-ww-google-reviews' data-embed-id='25588485' style="overflow-y:scroll;height:550px;"  loading="lazy"></div><script src='https://widgets.sociablekit.com/google-reviews/widget.js' defer></script>
             <!--
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
@@ -805,7 +805,6 @@ function grab_items($show,$category_name,$con){
   <script src="assets/js/main.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script>
   window.onload= function(){
     $.get("getEvents.php",function(data){
@@ -818,6 +817,36 @@ function grab_items($show,$category_name,$con){
              active: false 
         });
   } );
+  
+  document.addEventListener('DOMContentLoaded', function() {
+        const lazyReviews = document.querySelectorAll('.sk-ww-google-reviews');
+
+        const observerOptions = {
+            root: null, // relative to the viewport
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const reviewElement = entry.target;
+                    if (reviewElement.tagName === 'IFRAME' && reviewElement.dataset.src) {
+                        reviewElement.src = reviewElement.dataset.src;
+                    } else if (reviewElement.tagName === 'IMG' && reviewElement.dataset.src) {
+                        reviewElement.src = reviewElement.dataset.src;
+                    }
+                    // Add more conditions for other types of lazy-loaded content if needed
+
+                    observer.unobserve(reviewElement); // Stop observing once loaded
+                }
+            });
+        }, observerOptions);
+
+        lazyReviews.forEach(review => {
+            observer.observe(review);
+        });
+    });
   </script>
 </body>
 
