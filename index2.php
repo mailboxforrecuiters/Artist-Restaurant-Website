@@ -685,7 +685,7 @@ function grab_items($show,$category_name,$con){
 
           <div class="col-lg-8 mt-5 mt-lg-0" style="text-align: center;">
            
-            <h1>CONTACT NOW TO RESERVE A TABLE!</h1>
+           <iframe src='https://widgets.sociablekit.com/google-reviews/iframe/25588485' frameborder='0' width='100%' height='1000'></iframe>
             <!--
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
